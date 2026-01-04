@@ -24,7 +24,7 @@ def select_network():
             log(f"Current network: {current.get('ssid')}")
         return None
     
-    # Показываем список сетей
+
     log("\nAvailable Wi-Fi networks:")
     log("-" * 60)
     for i, n in enumerate(networks, 1):
@@ -35,7 +35,7 @@ def select_network():
         log(f"{i}. {ssid}")
         log(f"   Auth: {auth} | Signal: {signal} | Channel: {channel}")
     
-    # Показываем текущую сеть
+
     current = get_current_wifi()
     if current.get('ssid'):
         log(f"\nCurrent network: {current.get('ssid')}")
@@ -69,13 +69,13 @@ def run():
     log("WiFi Guard started")
     log("=" * 60)
     
-    # Выбор сети
+
     selected_network = select_network()
     if selected_network:
         log(f"\nMonitoring network: {selected_network}")
     log("=" * 60)
     
-    # Запуск мониторов
+ 
     log("\nStarting security monitors...")
     threading.Thread(target=start_arp_monitor, daemon=True).start()
     threading.Thread(target=start_dos_monitor, daemon=True).start()
@@ -85,7 +85,7 @@ def run():
     log("Monitoring for 15 seconds...")
     time.sleep(15)
 
-    # Проверки
+
     log("\nRunning security checks...")
     og, og_reasons = check_open_gateway()
 
